@@ -1,17 +1,19 @@
 const choices = ['rock', 'paper', 'scissors'];
 let playerScore = 0;
 let computerScore = 0;
+
 function computerPlay() { //randomly select from choices array
     random = Math.floor(Math.random() * choices.length) //create a random function
     return choices[random]; //return the choices array with the brackets setting the index, which in this case, sets the index to random rather than 0, 1, or 2
 }
 
-function playRound() {
-    const playerSelection = prompt("Enter your choice... Rock, Paper, or Scissors: ").toLowerCase();
-    const computerSelection = computerPlay();
+function playRound() { //1 round of gameplay
+    const playerSelection = prompt("Enter your choice... Rock, Paper, or Scissors: ").toLowerCase(); //Prompts user to select their choice
+    const computerSelection = computerPlay(); //Computer selects its choice
 
-    console.log("Player Selection:  ", playerSelection,"\nComputer Selection:", computerSelection);
+    console.log("Player Selection:  ", playerSelection,"\nComputer Selection:", computerSelection); //Prints the player and computer selections
 
+//conditional statements to compare user and computer selection to select a winner and add the score to the corresponding variable
     if(computerSelection == 'rock' && playerSelection == 'paper') {
         console.log("   You Win! Paper beats Rock!");
         return ++playerScore;
@@ -39,11 +41,11 @@ function playRound() {
     }
 }
 
-function game() {
+function game() { //plays 5 rounds of gameplay
     for (let i = 0; i < 5; i++) {
         playRound();
     }
-    if(playerScore > computerScore) {
+    if(playerScore > computerScore) { //calcuates the score to produce a winner for the 5 round game
         return "GAME OVER! YOU WIN!";
         } else if(computerScore > playerScore) {
         return "GAME OVER! YOU LOSE!";
